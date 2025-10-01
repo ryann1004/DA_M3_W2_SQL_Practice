@@ -8,7 +8,7 @@ USE coffeeshop_db;
 
 -- Q1) List all products (show product name and price), sorted by price descending.
 
--- Q2) Show all customers who live in the city of 'Līhuʻe'.
+-- Q2) Show all customers who live in the city of 'Lihue'.
 
 -- Q3) Return the first 5 orders by earliest order_datetime (order_id, order_datetime).
 
@@ -28,6 +28,3 @@ USE coffeeshop_db;
 -- Q10) Show customer full names as a single column 'customer_name'
 --      in the format "Last, First".
 
--- (Optional) Q11) Add a comment explaining what LIMIT does in MySQL.
-
--- Save this file and continue iterating as you test each query.

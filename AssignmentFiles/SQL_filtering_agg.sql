@@ -1,31 +1,45 @@
+-- ==================================
+-- FILTERS & AGGREGATION
+-- ==================================
+
 USE coffeeshop_db;
 
--- =========================================================
--- FILTERING & AGGREGATION PRACTICE
--- =========================================================
 
--- Q1) Compute total revenue per order (order_id, order_total) using v_order_revenue.
+-- Q1) Compute total items per order.
+--     Return (order_id, total_items) from order_items.
 
--- Q2) Compute total revenue per store (store_id, store_name, total_revenue),
---     excluding orders with status <> 'paid'.
+-- Q2) Compute total items per order for PAID orders only.
+--     Return (order_id, total_items). Hint: order_id IN (SELECT ... FROM orders WHERE status='paid').
 
--- Q3) How many orders (count) were placed per day? (date, orders_count) for all days present.
+-- Q3) How many orders were placed per day (all statuses)?
+--     Return (order_date, orders_count) from orders.
 
--- Q4) What is the average order_total for paid orders only?
+-- Q4) What is the average number of items per PAID order?
+--     Use a subquery or CTE over order_items filtered by order_id IN (...).
 
--- Q5) Which products (by name) have sold the most units overall across all stores?
---     Return product_name and total_units, sorted desc.
+-- Q5) Which products (by product_id) have sold the most units overall across all stores?
+--     Return (product_id, total_units), sorted desc.
 
--- Q6) Revenue by category (category_name, revenue), only for paid orders.
+-- Q6) Among PAID orders only, which product_ids have the most units sold?
+--     Return (product_id, total_units_paid), sorted desc.
+--     Hint: order_id IN (SELECT order_id FROM orders WHERE status='paid').
 
--- Q7) For each store, how many unique customers have placed a paid order?
+-- Q7) For each store, how many UNIQUE customers have placed a PAID order?
+--     Return (store_id, unique_customers) using only the orders table.
 
--- Q8) Which day of week has the highest total revenue for paid orders?
---     Return day_name and total_revenue. (Hint: DAYNAME(order_datetime))
+-- Q8) Which day of week has the highest number of PAID orders?
+--     Return (day_name, orders_count). Hint: DAYNAME(order_datetime). Return ties if any.
 
--- Q9) Show categories whose total paid revenue exceeds $30. (HAVING)
+-- Q9) Show the calendar days whose total orders (any status) exceed 3.
+--     Use HAVING. Return (order_date, orders_count).
 
--- Q10) Create a summary: per store, list payment_method and total revenue for paid orders.
+-- Q10) Per store, list payment_method and the number of PAID orders.
+--      Return (store_id, payment_method, paid_orders_count).
 
--- (Optional) Q11) Among paid orders, what percent of revenue is from 'Beans'?
---     Return a single row with pct_beans_revenue (0-100).
+-- Q11) Among PAID orders, what percent used 'app' as the payment_method?
+--      Return a single row with pct_app_paid_orders (0–100).
+
+-- Q12) Busiest hour: for PAID orders, show (hour_of_day, orders_count) sorted desc.
+
+
+-- ================
